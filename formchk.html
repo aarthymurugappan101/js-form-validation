@@ -1,0 +1,54 @@
+<html>
+<head>
+<style>
+ .yellow
+    {
+    	background-color:Yellow;           
+    }
+    .white
+    {
+    	background-color:White;    	
+    }
+</style>
+
+<script language="javascript">
+function formChk(){
+    var success=true;
+    var nameTxtBox=document.getElementById("title");//Retrieve the corresponding element;
+    var actorsTxtBox=document.getElementById("actors");//Retrieve the corresponding element
+    var name= nameTxtBox.value; //Retrieve the input name
+    var actors=actorsTxtBox.value;//Retrieve the actor name
+    var msgBox=document.getElementById("messageBox");//Retrieve the corresponding message box element
+     msgBox.innerHTML=""; //???
+     nameTxtBox.setAttribute("class","white");
+     actorsTxtBox.setAttribute("class","white");
+     //reset the colour of the textboxes to white if necessary
+     if(name==""){
+         msgBox.innerHTML+= "please enter the title";
+         nameTxtBox.setAttribute("class","yellow");
+         success = false;
+	//update the error message, highlight colour and Boolean value to prevent submission of form 
+     }
+     if(actors==""){
+         msgBox.innerHTML += "plese enter the actors";
+         actorsTxtBox.setAttribute("class","yellow");
+         success = false;
+		//update the error message, highlight colour and Boolean value to prevent submission of form 
+     }
+      return success;
+}
+</script>
+</head>
+<body>
+<div id="messageBox"></div>
+<form action="AddMovie.jsp">
+Title: <input type="text" name="title" id="title"/>
+<br>
+Actor List:<input type="text" name="actors" id="actors"/>
+<br>
+<input type="submit" value="submit" onclick="return formChk()"/>
+</form>
+
+</body>
+
+</html>
